@@ -37,11 +37,11 @@ function get_page(url, callback){
 			var chef = $('.field--name-field-chef').children('.field__items').first().text();
 
 			var restaurant = {
-                "name": name,
+                "name": name.substring(7,name.length-4),
                 "address": adresse,
                 "zipcode": code_postal,
                 "city": ville,
-                "description": description,
+                "description": description.substring(11,description.length-8),
                 "chef": chef, 
                 "url": url
             };
@@ -51,7 +51,7 @@ function get_page(url, callback){
 }
 
 function scraping(url){
-	var json = { "starred_restaurants": [] };
+	var starred_restaurants = [];
 	get_number_pages(url, function(number){
 		var i = 1; //Number of the page
 		var counter = 0;
@@ -59,8 +59,8 @@ function scraping(url){
 			get_urls_in_resultpage(url + '/page' + i.toString(), function(urls_array){
 				urls_array.forEach(function(element){
 					get_page(element, function(restaurant){
-						json.starred_restaurants.push(restaurant);
-						fs.writeFile('output.json', JSON.stringify(json), 'utf8', function(error){
+						starred_restaurants.push(restaurant);
+						fs.writeFile('output.json', JSON.stringify(starred_restaurants), 'utf8', function(error){
 							if(error) {
 								return console.log(error);
 							} else{
@@ -76,7 +76,7 @@ function scraping(url){
 	});	
 }
 
-//scraping('https://restaurant.michelin.fr/restaurants/france/restaurants-1-etoile-michelin/restaurants-2-etoiles-michelin/restaurants-3-etoiles-michelin');
+scraping('https://restaurant.michelin.fr/restaurants/france/restaurants-1-etoile-michelin/restaurants-2-etoiles-michelin/restaurants-3-etoiles-michelin');
 
 function get(){
 	var obj = JSON.parse(fs.readFileSync('output.json', 'utf8'));
