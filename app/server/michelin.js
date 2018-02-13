@@ -55,11 +55,12 @@ function scraping(url){
 	get_number_pages(url, function(number){
 		var i = 1; //Number of the page
 		var counter = 0;
-		while(i <= number){
-			get_urls_in_resultpage(url + '/page' + i.toString(), function(urls_array){
+		for (var i = 1; i < +number + 1; i++) {
+			get_urls_in_resultpage(url + '/page-' + i.toString(), function(urls_array){
 				urls_array.forEach(function(element){
 					get_page(element, function(restaurant){
 						starred_restaurants.push(restaurant);
+						//console.log(restaurant);
 						fs.writeFile('output.json', JSON.stringify(starred_restaurants), 'utf8', function(error){
 							if(error) {
 								return console.log(error);
@@ -71,14 +72,15 @@ function scraping(url){
 					});
 				});
 			});	
-			i++;
 		}
 	});	
 }
 
-scraping('https://restaurant.michelin.fr/restaurants/france/restaurants-1-etoile-michelin/restaurants-2-etoiles-michelin/restaurants-3-etoiles-michelin');
-
 function get(){
+	if (!fs.existsSync('./output.json')) {
+		scraping('https://restaurant.michelin.fr/restaurants/france/restaurants-1-etoile-michelin/restaurants-2-etoiles-michelin/restaurants-3-etoiles-michelin');
+        return console.log('Scrapping started, please retry the same command in order to get data.');
+    }
 	var obj = JSON.parse(fs.readFileSync('output.json', 'utf8'));
 	return obj;
 	//console.log(obj);
