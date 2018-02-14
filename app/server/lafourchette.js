@@ -11,19 +11,21 @@ function get_id_restaurant(name,address,zipcode,callback){
 		json : true
 	}, function(error, response, body){
 		//console.log(body);
-		try{
-			if(body.length > 0){
-				body.forEach(function(element){
-					if(element.name === name && element.address.postal_code === zipcode){
-						id = element.id;
-						//console.log(element.address.postal_code);
-						callback(id);
-					}
-				});
-			}	
-		} catch(error){
-			console.log(error);
-		}
+		if(body != null){
+			try{
+				if(body.length > 0){
+					body.forEach(function(element){
+						if(/*element.name === name &&*/ element.address.postal_code === zipcode){
+							id = element.id;
+							//console.log(element.address.postal_code);
+							callback(id);
+						}
+					});
+				}
+			} catch(error){
+				console.log(error);
+			}
+		}	
 	});
 }
 
@@ -54,29 +56,29 @@ function get_restaurant_promo_info(id,name_lafourchette,callback){
 				menus_promo.push([title_menu,description_menu]);
             });
 			//console.log(menus_promo)
-			callback(menus_promo);
+			callback(menus_promo,url);
 		}
 	});
 }
 
 function send_data_json(){
+	var compteur = 0;
 	var file = JSON.parse(fs.readFileSync('output.json').toString());
 	file.forEach(function(element){
 		get_id_restaurant(element.name,element.address,element.zipcode,function(id){
 			get_nameLaFourchette(id,function(name_lafourchette){
-				get_restaurant_promo_info(id,name_lafourchette,function(menus_promo){
-					if(!element.menu){
-						element.menu = menus_promo;
-					} else{
-						element.menu = menus_promo;
-					}
-					console.log(element);
+				get_restaurant_promo_info(id,name_lafourchette,function(menus_promo,url){
+					element.urlLafourchette = url;
+					element.menu = menus_promo;
+					//console.log(element);
 
 					fs.writeFile('output.json', JSON.stringify(file), 'utf8', function(error){
 						if(error) {
-							return console.log(error);
+							return 0; 
+							//console.log(error);
 						} else{
-							console.log("Restaurant uploaded");
+							compteur++;
+							console.log("Restaurant " + compteur + " uploaded");
 						}
 					})
 
@@ -87,3 +89,5 @@ function send_data_json(){
 }
 
 send_data_json();
+
+module.exports = {send_data_json : send_data_json};
