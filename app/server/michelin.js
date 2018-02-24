@@ -79,7 +79,8 @@ function scraping(url){
 function get(){
 	if (!fs.existsSync('./output.json')) {
 		scraping('https://restaurant.michelin.fr/restaurants/france/restaurants-1-etoile-michelin/restaurants-2-etoiles-michelin/restaurants-3-etoiles-michelin');
-        return console.log('Scrapping started, please retry the same command in order to get data.');
+		//get();
+		return console.log('Scrapping started, please retry the same command in order to get data.');
     }
 	var obj = JSON.parse(fs.readFileSync('output.json', 'utf8'));
 	return obj;
