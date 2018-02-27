@@ -14,7 +14,8 @@ class PanelComponent extends Component {
             })
             return(<p>{liste}</p>);
         }
-        const restaurants = Object.keys(menus).map(function(element,index){  
+        const restaurants = Object.keys(menus)
+        .map(function(element,index){  
             var etoile = "\u2605";
             var id = menus[element].urlLafourchette.split("/")[5];
 
