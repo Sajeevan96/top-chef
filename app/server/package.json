@@ -1,9 +1,9 @@
 {
-  "name": "node-web-scrape",
-  "version": "0.0.1",
-  "description": "Scrape le web.",
+  "name": "top-chef",
+  "version": "1.0.0",
+  "description": "Scraping / API",
   "main": "server.js",
-  "author": "Scotch",
+  "author": "Sajeevan",
   "dependencies": {
     "express": "latest",
     "request": "latest",

@@ -141,15 +141,18 @@ function send_data_json(){
 
 function getDeal(){
 	var file = JSON.parse(fs.readFileSync('output.json'.toString()));
+	var json = [];
 	file.forEach(function(element){
 		if(element.menu != null && element.menu.length > 0){
-			console.log("Restaurant : " + element.name);
+			json.push({"name":element.name, "menus":element.menu});
+			/*console.log("Restaurant : " + element.name);
 			element.menu.forEach(function(menu){
 				console.log(menu);
 			})
-			console.log("\n");
+			console.log("\n");*/
 		}
 	});
+	return json;
 }
 //getDeal();
 
