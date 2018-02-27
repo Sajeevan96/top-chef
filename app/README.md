@@ -1,12 +1,18 @@
+Commandes à partir du répertoire server (cd server)
+
+1) node michelin.js
+
+2) node lafourchette.js
+
 Commandes npm à taper à partir du répertoire app :
 
-1) Chargement du server:
+3) Chargement du server:
 
  cd server
 
  npm start
 
-2) Chargement du client:
+4) Chargement du client:
 
  cd client 
 
