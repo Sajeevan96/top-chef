@@ -1,4 +1,4 @@
-Commande npm à taper à partir du répertoire app:
+Commandes npm à taper à partir du répertoire app:
 
 1) Chargement du server:
 
