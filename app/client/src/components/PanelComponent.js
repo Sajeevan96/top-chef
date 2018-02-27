@@ -16,10 +16,15 @@ class PanelComponent extends Component {
             return(<p>{liste}</p>);
         }
         const restaurants = Object.keys(menus).map(function(element,index){  
+            var etoile = "\u2605";
+            console.log(menus[element].number_stars);
+            for(var i = 2; i <= menus[element].number_stars; i++){
+                etoile += " \u2605";
+            }  
             return(
                 <Panel>
                     <Panel.Heading>
-                    <Panel.Title componentClass="h3">{menus[element].name}</Panel.Title>
+                    <Panel.Title componentClass="h3">{menus[element].name + " " + etoile}</Panel.Title>
                     </Panel.Heading>
                     <Panel.Body><Listemenus menusliste={menus[element].menus}/></Panel.Body>
                 </Panel>

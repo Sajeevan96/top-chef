@@ -35,12 +35,19 @@ function get_page(url, callback){
 			var ville = $('.locality').first().text(); 
 			var description = $('.node_poi-cooking-types').first().text();
 			var chef = $('.field--name-field-chef').children('.field__items').first().text();
+			var star = 1;
+            if ($('span').hasClass('icon-cotation2etoiles')) {
+                star = 2;
+            } if ($('span').hasClass('icon-cotation3etoiles')) {
+                star = 3;
+			}
 
 			var restaurant = {
                 "name": name.substring(7,name.length-4),
                 "address": adresse,
                 "zipcode": code_postal,
-                "city": ville,
+				"city": ville,
+				"number_stars": star,
                 "description": description.substring(11,description.length-8),
                 "chef": chef, 
                 "url": url
@@ -79,13 +86,12 @@ function scraping(url){
 function get(){
 	if (!fs.existsSync('./output.json')) {
 		scraping('https://restaurant.michelin.fr/restaurants/france/restaurants-1-etoile-michelin/restaurants-2-etoiles-michelin/restaurants-3-etoiles-michelin');
-		//get();
-		return console.log('Scrapping started, please retry the same command in order to get data.');
-    }
-	var obj = JSON.parse(fs.readFileSync('output.json', 'utf8'));
-	return obj;
+		console.log('Scrapping started, please retry the same command if you want to see the data in command prompt.');
+    } else{
+		var obj = JSON.parse(fs.readFileSync('output.json', 'utf8'));
+		return obj;
+	}
 	//console.log(obj);
 }
-//get();
-
+get();
 module.exports = {get : get};
