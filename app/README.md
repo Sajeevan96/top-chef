@@ -1,6 +1,6 @@
 Commande npm à taper à partir du répertoire app:
 
-1) Chargement du server:
+1) Chargement du server: \n
 cd server
 npm start
 
