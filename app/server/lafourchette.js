@@ -144,7 +144,7 @@ function getDeal(){
 	var json = [];
 	file.forEach(function(element){
 		if(element.menu != null && element.menu.length > 0){
-			json.push({"name":element.name, "number_stars":element.number_stars,"menus":element.menu});
+			json.push({"name":element.name, "number_stars":element.number_stars,"menus":element.menu,"urlLafourchette":element.urlLafourchette});
 			console.log("Restaurant : " + element.name);
 			console.log("Number Stars : " + element.number_stars);
 			element.menu.forEach(function(menu){
