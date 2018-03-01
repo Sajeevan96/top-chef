@@ -1,19 +1,13 @@
-Commandes à partir du répertoire server (cd server)
+# Command lines from the folder app/server (cd app/server)
 
-1) node michelin.js
+1) npm start 
 
-2) node lafourchette.js
+Then, please wait until the message : "Use the npm start command line into client folder"
 
-Commandes npm à taper à partir du répertoire app :
+# Command lines from the folder app/client (cd app/client) :
 
-3) Chargement du server:
+After you get the message, tap the following command line: 
 
- cd server
+2) npm start
 
- npm start
 
-4) Chargement du client:
-
- cd client 
-
- npm start
