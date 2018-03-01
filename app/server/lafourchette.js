@@ -122,7 +122,7 @@ function send_data_json(){
 							//console.log(error);
 						} else{
 							compteur++;
-							console.log("Restaurant " + compteur + " uploaded");
+							console.log("Restaurant " + compteur + " updated");
 						}
 					})
 
