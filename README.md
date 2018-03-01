@@ -6,7 +6,7 @@ Then, please wait until the message : "Use the npm start command line into clien
 
 # Command lines from the folder app/client (cd app/client) :
 
-After you get the mesage, tap the following command line: 
+After you get the message, tap the following command line: 
 
 2) npm start
 
