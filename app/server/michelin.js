@@ -89,9 +89,9 @@ function get(){
 		console.log('Scrapping started, please retry the same command if you want to see the data in command prompt.');
     } else{
 		var obj = JSON.parse(fs.readFileSync('output.json', 'utf8'));
-		return obj;
+		return console.log(obj);
 	}
 	//console.log(obj);
 }
 get();
-module.exports = {get : get};
+module.exports = {};

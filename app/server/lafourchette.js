@@ -23,7 +23,7 @@ function get_id_restaurant(name,address,zipcode,callback){
 					});
 				}
 			} catch(error){
-				console.log(error);
+				//console.log(error);
 			}
 		}	
 	});
@@ -146,4 +146,4 @@ function getDeal(){
 }
 //getDeal();
 
-module.exports = {send_data_json : send_data_json, getDeal : getDeal};
+module.exports = {getDeal : getDeal};

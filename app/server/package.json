@@ -8,5 +8,8 @@
     "express": "latest",
     "request": "latest",
     "cheerio": "latest"
+  },
+  "scripts": {
+    "start": "node michelin.js && node lafourchette.js && node server.js"
   }
 }
