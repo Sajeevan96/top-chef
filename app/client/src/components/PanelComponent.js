@@ -20,7 +20,7 @@ class PanelComponent extends Component {
             var id = menus[element].urlLafourchette.split("/")[5];
 
             var site = "https://www.lafourchette.com/restaurant/" + menus[element].name + "/" + id;
-            console.log(id);
+            //console.log(id);
             for(var i = 2; i <= menus[element].number_stars; i++){
                 etoile += " \u2605";
             }  

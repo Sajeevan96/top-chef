@@ -14,7 +14,6 @@ function get_id_restaurant(name,address,zipcode,callback){
 		if(body != null){
 			try{
 				if(body.length > 0){
-					//console.log("***");
 					body.forEach(function(element){
 						if(/*element.name === name &&*/ element.address.postal_code === zipcode){
 							id = element.id;
@@ -33,7 +32,6 @@ function get_id_restaurant(name,address,zipcode,callback){
 function get_nameLaFourchette(id,callback){
 	
 	var url = "https://m.lafourchette.com/api/restaurant/" + id;
-	//console.log(url);
 	request({url:url, json:true}, function(error, response, body){
 		if(!error){
 			name_lafourchette = body.name;
@@ -67,7 +65,6 @@ function get_nameLaFourchette(id,callback){
 					var title_menu = "Evénement : ";
 				} else{
 					var title_menu = "Menu : ";
-					//console.log("**");
 				}
 				//var title_menu = "Menu : ";
                 title_menu += $(element).children('h3[class=saleType-title]').text();
@@ -98,7 +95,6 @@ function get_restaurant_promo_info(id,callback){
 								menus_promo.push("Menu : " + menu.title);
 							}
 						}
-						//console.log(menu.title);
 					});
 					//console.log(menus_promo);
 					callback(menus_promo,urlLafourchette);
@@ -119,7 +115,6 @@ function send_data_json(){
 				get_restaurant_promo_info(id,function(menus_promo,url){
 					element.urlLafourchette = url;
 					element.menu = menus_promo;
-					console.log(element);
 
 					fs.writeFile('output.json', JSON.stringify(file), 'utf8', function(error){
 						if(error) {
@@ -145,12 +140,6 @@ function getDeal(){
 	file.forEach(function(element){
 		if(element.menu != null && element.menu.length > 0){
 			json.push({"name":element.name, "number_stars":element.number_stars,"menus":element.menu,"urlLafourchette":element.urlLafourchette});
-			console.log("Restaurant : " + element.name);
-			console.log("Number Stars : " + element.number_stars);
-			element.menu.forEach(function(menu){
-				console.log(menu);
-			})
-			console.log("\n");
 		}
 	});
 	return json;
