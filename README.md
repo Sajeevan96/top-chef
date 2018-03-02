@@ -2,8 +2,9 @@
 
 > Eat well and cheaper than usually
 
+## Instructions 
 
-## Command lines from the folder app/server (cd app/server)
+### Command lines from the folder app/server (cd app/server)
 
 1) npm install
 
@@ -17,7 +18,7 @@ If any error :
 
 - use "node server.js" command line instead. 
 
-## Command lines from the folder app/client (cd app/client) :
+### Command lines from the folder app/client (cd app/client) :
 
 After you get the message, tap the following command line: 
 
