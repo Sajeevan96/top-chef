@@ -1,6 +1,13 @@
-# Command lines from the folder app/server (cd app/server)
+# TOP CHEF
 
-1) npm start 
+> Eat well and cheaper than usually
+
+
+## Command lines from the folder app/server (cd app/server)
+
+1) npm install
+
+2) npm start 
 
 Then, please wait until the message : "Use the npm start command line into client folder". 
 
@@ -10,19 +17,16 @@ If any error :
 
 - use "node server.js" command line instead. 
 
-# Command lines from the folder app/client (cd app/client) :
+## Command lines from the folder app/client (cd app/client) :
 
 After you get the message, tap the following command line: 
+
+1) npm install
 
 2) npm start
 
 
 
-
-
-# TOP CHEF
-
-> Eat well and cheaper than usually
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
