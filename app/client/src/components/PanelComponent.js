@@ -2,11 +2,31 @@ import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
 
 class PanelComponent extends Component {
+    constructor(props, context) {
+        super(props, context);
+    }
+    
     render(){
-        const menus = this.props.value;
+        var menus = this.props.menus;
+        var search = '';
+        
+        if(this.props.search !== '' && this.props.search !== null ){
+            search = this.props.search;
+
+            menus = menus.filter(isSearch);
+            console.log(menus);
+        }
+        function isSearch(element){
+            if(element.name.toLowerCase().includes(search.toLowerCase())){
+                return true;
+            } else{
+                return false;
+            }
+        }
+        
+
         function Listemenus(menusliste){
-            menusliste = menusliste.menusliste;
-            
+            menusliste = menusliste.menusliste;   
             const liste = Object.keys(menusliste).map(function(element){
                 return(
                     <li>{menusliste[element]}</li>
